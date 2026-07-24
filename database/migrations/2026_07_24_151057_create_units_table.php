@@ -9,18 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void {
+    public function up(): void
+    {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('unit_number'); // 门牌号
-            $table->integer('sqft');      // 面积
+            $table->string('block', 50); 
+            $table->string('unit_number', 50)->unique(); 
+            $table->integer('sqft'); 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('units');
